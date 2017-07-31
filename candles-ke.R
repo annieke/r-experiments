@@ -28,7 +28,7 @@ blow_1_to_100_candles = function() {
   n = 1
   avgs = numeric(100)
   while (n < 101) {
-    avgs[n] = mean(replicate(100, blow_out_candles(n)))
+    avgs[n] = mean(replicate(1000, blow_out_candles(n)))
     n = n + 1
   }
   barplot(avgs)
