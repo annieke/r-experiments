@@ -9,6 +9,7 @@ blow_n_candles_once = function(n) {
 blow_out_candles = function(n) {
   # a is the number of attempts, and we start with 0 attempts
   a = 0
+  
   # while we still have candles left, we keep on blowing out candles
   # each time we blow out a number of candles, we subtract them from the count
   while (n > 0) {
@@ -16,6 +17,7 @@ blow_out_candles = function(n) {
     # each time we blow, the number of attempt increases by 1
     a = a + 1
   }
+  
   # we return the number of attempts
   return(a)
 }
@@ -41,6 +43,7 @@ blow_1_to_100_candles = function() {
   n = 1
   # we keep our averages in a numeric list with 100 values
   avgs = numeric(100)
+  
   # we simulate all candle counts from 1 to 100
   while (n < 101) {
     # we set each slot in the list to the average number of attempts needed to blow out
@@ -49,6 +52,7 @@ blow_1_to_100_candles = function() {
     # we move on to the next candles count 
     n = n + 1
   }
+  
   # we plot the averages and return them 
   barplot(avgs)
   return(avgs)
