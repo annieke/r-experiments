@@ -5,9 +5,8 @@ blow_n_candles_once = function(n) {
 
 # This function takes no inputs and returns the number of attempts to blow out 35 candles
 # assuming that each blow extinguishes between 1 to all the remaining candles
-blow_out_candles = function() {
+blow_out_candles = function(n) {
   a = 0
-  n = 35
   while (n > 0) {
     n = n - blow_n_candles_once(n)
     a = a + 1
@@ -15,8 +14,8 @@ blow_out_candles = function() {
   return(a)
 }
 
-blow_and_plot = function(num_repetitions) {
-  all_experiments = replicate(num_repetitions, blow_out_candles())
+blow_and_plot = function(num_candles, num_repetitions) {
+  all_experiments = replicate(num_repetitions, blow_out_candles(num_candles))
   
   all_experiments_table = table(all_experiments)
   
@@ -25,3 +24,13 @@ blow_and_plot = function(num_repetitions) {
   return(all_experiments_table)
 }
 
+blow_1_to_100_candles = function() {
+  n = 1
+  avgs = numeric(100)
+  while (n < 101) {
+    avgs[n] = mean(replicate(100, blow_out_candles(n)))
+    n = n + 1
+  }
+  barplot(avgs)
+  return(avgs)
+}
